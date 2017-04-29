@@ -5,7 +5,10 @@ function extract = LSB_embed(name, message, lsb, color)
 % lsb: lsb-rightmost LSBs
 % color: 1-red, 2-green, 3-blue
 
+    % read the image from path name
     image = imread(name);
+    
+    % show the original image
     imshow(image);
     title('Original Image');
     global flag;
@@ -13,8 +16,9 @@ function extract = LSB_embed(name, message, lsb, color)
         pause(0.5);
     end
     flag = 0;
+    
+    % conver the message into character vector
     message = char(message);
-%     message = string(message);
     message = uint8(message);
     msg_origin = unicode2native(strcat(message, char(4)), 'UTF-8');  % UTF-8 encode, 'EOT' is the end tag
     msg_bin = dec2bin(msg_origin, 8);  % convert to binary
@@ -40,7 +44,7 @@ function extract = LSB_embed(name, message, lsb, color)
     image_result = image;
     image_result(:, :, color) = layer;
     
-    % show the image
+    % show the result image
     imshow(image_result);
     title('Result Image');
     while (flag == 0)
