@@ -41,14 +41,6 @@ DCT_quantizer = ...
 	  49  64  78  87 103 121 120 101; ...
 	  72  92  95  98 112 100 103  99 ];
 
-% figure(2);
-while (flag == 0)
-    pause(0.5);
-end
-flag = 0;
-imshow(coverzero);
-title('Original image');
-
 pad_cols = (1 - (cols / blocksize - floor(cols / blocksize))) * blocksize;
 if pad_cols == blocksize, pad_cols = 0; end
 pad_rows = (1 - (rows / blocksize - floor(rows / blocksize))) * blocksize;
