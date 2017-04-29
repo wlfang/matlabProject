@@ -77,7 +77,7 @@ while (flag == 0)
 end
 flag = 0;
 hist(jpeg_img);
-title('Chart');
+title('Coefficient distribution after DCT');
 % figure(4);
 while (flag == 0)
     pause(0.5);
@@ -135,7 +135,7 @@ while (flag == 0)
 end
 flag = 0;
 hist(jpeg_img);
-title('Chart');
+title('Coefficient distribution after embedding message');
 
 % Reconstructing image
 recon_img = coverzero - coverzero;  % zero the matrix for the reconstructed image
