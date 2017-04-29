@@ -39,6 +39,8 @@ function extract = LSB_embed(name, message, lsb, color)
     % save the picture
     image_result = image;
     image_result(:, :, color) = layer;
+    
+    % show the image
     imshow(image_result);
     title('Result Image');
     while (flag == 0)
@@ -47,6 +49,8 @@ function extract = LSB_embed(name, message, lsb, color)
     flag = 0;
     
     imwrite(image_result, 'result.png');  % jpg would lose some information
+    
+    % call the LSB_extract and return the extracted message
     extract = LSB_extract('result.png',1,1);
     disp(extract);
 end

@@ -58,10 +58,7 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 imshow('cover.png');
-% set(handles.axes1,'xtick',[],'ytick',[]);
-
 % UIWAIT makes gui wait for user response (see UIRESUME)
-% uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
@@ -80,9 +77,13 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+% get full path name 
 [filename pathname] = uigetfile({'*.*'}, 'File Selector');
 global fullpathname;
 fullpathname = strcat(pathname, filename);
+
+% set text5 to the full path name
 set(handles.text5, 'String', fullpathname);
 
 
@@ -94,6 +95,8 @@ function edit1_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit1 as text
 %        str2double(get(hObject,'String')) returns contents of edit1 as a double
+
+% get message from edit text
 global message
 message = get(hObject,'String');
 
@@ -141,11 +144,15 @@ function togglebutton2_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of togglebutton2;
+
+% call the Jsteg function
 global message;
 global fullpathname;
 global flag;
 flag = 0;
 decodedMessage = Jsteg_1(fullpathname, message);
+
+% convert the decoded message into string
 decodedMessage = char(decodedMessage);
 decodedMessage = string(decodedMessage);
 set(handles.text4, 'String', decodedMessage);
@@ -166,10 +173,14 @@ function togglebutton4_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of togglebutton4
+
+% call the LSB function
 global message;
 global fullpathname;
 global flag;
 flag = 0;
 set(handles.text4, 'String', '');
 decodedMess = LSB_embed(fullpathname, message, 1, 1);
+
+% set the text4 to the decoded message
 set(handles.text4, 'String', decodedMess);

@@ -246,5 +246,3 @@ end
 decodedMess = messagestring;
 %disp(char(messagestring)); % convert to character array
 end
-
-
